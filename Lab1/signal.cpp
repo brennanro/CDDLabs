@@ -6,7 +6,7 @@
    Author: Ronan Brennan 
    Date: 14/10/2017
 
-   Using Semaphore signal and wait to output values
+   Objective:Using Semaphore signal and wait to output values.
 **/
 void taskOne(std::shared_ptr<Semaphore> theSemaphore){
   std::cout<<"Task One Entered"<<std::endl; /**Check that Task one is entered**/
