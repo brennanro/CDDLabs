@@ -6,7 +6,7 @@
    Author: Ronan Brennan 
    Date: 15/10/2017
 
-  Demonstrating how rendezvous works in semaphores
+  Objective:Demonstrating how rendezvous works in semaphores.
 **/
 
 void taskOneA(std::shared_ptr<Semaphore> theSemaphore){
