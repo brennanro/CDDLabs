@@ -2,6 +2,13 @@
 #include <iostream>
 #include <thread>
 
+/**
+   Author: Ronan Brennan 
+   Date: 15/10/2017
+
+  Demonstrating how rendezvous works in semaphores
+**/
+
 void taskOneA(std::shared_ptr<Semaphore> theSemaphore){
   std::cout << "A1"<<std::endl;
   theSemaphore->Signal();
