@@ -9,25 +9,25 @@
   Objective:Demonstrating how rendezvous works in semaphores.
 **/
 
-void taskOneA(std::shared_ptr<Semaphore> theSemaphore){
+void taskOneA(std::shared_ptr<Semaphore> theSemaphoreA){
   std::cout << "A1"<<std::endl;
-  theSemaphore->Signal();
+  theSemaphoreA->Signal();
 }
-void taskOneB(std::shared_ptr<Semaphore> theSemaphore){
+void taskOneB(std::shared_ptr<Semaphore> theSemaphoreB){
   std::cout << "B1"<<std::endl;
-  theSemaphore->Signal();
+  theSemaphoreB->Signal();
 
 }
 
-void taskTwoA(std::shared_ptr<Semaphore> theSemaphore){
-  theSemaphore->Wait();
+void taskTwoA(std::shared_ptr<Semaphore> theSemaphoreA){
+  theSemaphoreA->Wait();
   std::cout << "A2"<<std::endl;
   
 
 }
 
-void taskTwoB(std::shared_ptr<Semaphore> theSemaphore){
-  theSemaphore->Wait();
+void taskTwoB(std::shared_ptr<Semaphore> theSemaphoreB){
+  theSemaphoreB->Wait();
   std::cout <<"B2"<<std::endl;
   
 }
