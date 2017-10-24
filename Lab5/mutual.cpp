@@ -5,7 +5,6 @@
 /**
    Author: Ronan Brennan 
    Date: 14/10/2017
-   Licence: GNU V3
 
    Objective:Using Semaphore signal and wait to output values.
 **/

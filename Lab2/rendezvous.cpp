@@ -5,6 +5,7 @@
 /**
    Author: Ronan Brennan 
    Date: 15/10/2017
+   Licence: GNU V3
 
   Objective:Demonstrating how rendezvous works in semaphores.
 **/
