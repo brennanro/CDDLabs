@@ -1,5 +1,5 @@
 #Ronan Brennan   15/10/2017
-#Semaphore MakeFile Lab2
+#Rendezvous MakeFile Lab2
 
 CC=g++
 CFLAGS= -std=c++11 -pthread

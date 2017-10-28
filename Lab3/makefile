@@ -1,5 +1,5 @@
 #Ronan Brennan   14/10/2017
-#Semaphore MakeFile Lab1
+#Mutual MakeFile Lab3
 
 CC=g++
 CFLAGS= -std=c++11 -pthread
