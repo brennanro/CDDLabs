@@ -1,3 +1,6 @@
 # CDDLabs
-# Ronan Brennan
-# GNU V3
+<<<<<<< HEAD
+=======
+Labs for Concurrent Devices Class
+#Ronan Brennan
+>>>>>>> refs/remotes/origin/master
