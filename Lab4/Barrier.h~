@@ -1,0 +1,19 @@
+/**
+   Author: Ronan Brennan 
+   Date: 04/10/2017
+   Licence: GNU V3
+
+   Objective:Demonstrating how Resuable Barriers function. This is the .h file
+**/
+
+class Barrier {
+public:
+    Barrier(unsigned int n);
+    void Wait(void);
+private:
+    std::mutex counterMutex;
+    std::mutex waitMutex;
+
+    unsigned int expectedN;
+    unsigned int currentN;
+};
