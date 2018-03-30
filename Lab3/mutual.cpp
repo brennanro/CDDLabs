@@ -4,41 +4,30 @@
 
 /**
    Author: Ronan Brennan 
-   Date: 14/10/2017
+   Date: 15/10/2017
    Licence: GNU V3
 
-   Objective:Using Semaphore signal and wait to output values.
+  Objective:Demonstrating mutual exclusion.
 **/
-int taskOne(std::shared_ptr<Semaphore> theSemaphore){
-  int count=0;
-  for(int i=0; i<10;i++)
-    {
-  std::cout<<"Task One Entered"<<std::endl; /**Check that Task one is entered**/
-  theSemaphore->Signal();/**Send Signal**/
-  count++;/**Signal increments count to 1**/
-  if (count==0)
-    {
-  theSemaphore->Wait();/**Won't continue until signal is received**/
-  count--;
-  std::cout<<"Signal recieved"<<std::endl;/** Recieved as nothing else running**/
-    }
-  else
-    {
-      std::cout<<"Awaiting signal"<<std::endl;/**Cannot recieve signal as already in use >0**/
-  theSemaphore->Wait();/**Won't continue until signal is received**/
-  while(count!=-1){
-  count--;
-  }
-    }
-    }
+
+int count = 1; 
+void threadCheck(std::shared_ptr<Semaphore> theSemaphore){
+  theSemaphore->Wait();
+  std::cout << "Thread Number " << count << " Entered\n";
+  count++;
+  theSemaphore->Signal();
 }
 
-int main(void){
-  std::thread threadOne;
-  std::shared_ptr<Semaphore> sem( new Semaphore);
-  /**< Launch the threads  */
-  threadOne=std::thread(taskOne,sem);
+int main(void){ 
+  std::thread thread1, thread2, thread3;
+  std::shared_ptr<Semaphore> sem( new Semaphore(1));
+  /** Launch the threads  */
   std::cout << "Launched from the main\n";
-  threadOne.join();
+  thread1 = std::thread (threadCheck,sem);
+  thread2 = std::thread (threadCheck,sem);
+  thread3 = std::thread (threadCheck,sem);
+  thread1.join();
+  thread2.join();
+  thread3.join();
   return 0;
 }
