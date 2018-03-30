@@ -20,7 +20,7 @@ DEBUG: DEBUGFLAGS = -g 00
 DEBUG: ALL
 
 DOC: 
-	$(DOXYGEN) Doxyfile
+	$(DOXYGEN) DoxFile
 	$(BROW)
 DOC: ALL
 
