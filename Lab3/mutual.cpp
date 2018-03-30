@@ -10,18 +10,18 @@
   Objective:Demonstrating mutual exclusion.
 **/
 
-int count = 1; 
+int count = 1; // initilize count
 void threadCheck(std::shared_ptr<Semaphore> theSemaphore){
-  theSemaphore->Wait();
-  std::cout << "Thread Number " << count << " Entered\n";
-  count++;
-  theSemaphore->Signal();
+  theSemaphore->Wait(); // Semephore Wait
+  std::cout << "Thread Number " << count << " Entered\n"; // Thread number output
+  count++; // increment count
+  theSemaphore->Signal(); // Semephore Signal
 }
 
 int main(void){ 
   std::thread thread1, thread2, thread3;
   std::shared_ptr<Semaphore> sem( new Semaphore(1));
-  /** Launch the threads  */
+ 
   std::cout << "Launched from the main\n";
   thread1 = std::thread (threadCheck,sem);
   thread2 = std::thread (threadCheck,sem);
