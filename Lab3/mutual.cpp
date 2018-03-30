@@ -19,7 +19,7 @@ void threadCheck(std::shared_ptr<Semaphore> theSemaphore){
 }
 
 int main(void){ 
-  std::thread thread1, thread2, thread3;
+  std::thread thread1, thread2, thread3; // create threads
   std::shared_ptr<Semaphore> sem( new Semaphore(1));
  
   std::cout << "Launched from the main\n";
