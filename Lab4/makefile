@@ -1,3 +1,6 @@
+#Ronan Brennan   17/10/2017
+#Barriers MakeFile Lab4
+
 CC=g++
 CFLAGS= -std=c++11 -pthread -I.
 DOXYGEN = doxygen
