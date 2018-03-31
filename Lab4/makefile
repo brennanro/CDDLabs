@@ -3,6 +3,8 @@
 
 CC=g++
 CFLAGS= -std=c++11 -pthread -I.
+HFILES= Semaphore.h Barrier.h    #.h files
+CFILES=Semaphore.cpp main.cpp Barrier.cpp #.cpp files
 DOXYGEN = doxygen
 INDEX_SRC = docs/html/index.html
 INDEX = firefox $(INDEX_SRC)
