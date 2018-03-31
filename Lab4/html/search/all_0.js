@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['cddlabs',['CDDLabs',['../md_README.html',1,'']]]
+  ['barrier',['Barrier',['../class_barrier.html',1,'Barrier'],['../class_barrier.html#a462a2435e07b6fabc0265011f03310ee',1,'Barrier::Barrier()']]]
 ];
