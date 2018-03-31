@@ -1,4 +1,3 @@
-
 CC=g++
 CFLAGS= -std=c++11 -pthread -I.
 DOXYGEN = doxygen
@@ -15,7 +14,7 @@ DEBUG: DEBUGFLAGS = -g -00
 DEBUG: ALL
 
 DOC: 
-	$(DOXYGEN) Doxyfile
+	$(DOXYGEN) DoxFile
 	$(INDEX)
 DOC: ALL
 
