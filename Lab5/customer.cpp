@@ -1,43 +1,39 @@
-#include "Semaphore.h"
+#include "customer.h"
 #include <iostream>
-#include <thread>
 
 /**
    Author: Ronan Brennan 
-   Date: 14/10/2017
+   Date: 17/10/2017
+   Licence: GNU V3
 
-   Objective:Using Semaphore signal and wait to output values.
+   Objective: Producer and Consumer Demonsraration.
 **/
-int taskOne(std::shared_ptr<Semaphore> theSemaphore){
-  int count=0;
-  for(int i=0; i<10;i++)
-    {
-  std::cout<<"Task One Entered"<<std::endl; /**Check that Task one is entered**/
-  theSemaphore->Signal();/**Send Signal**/
-  count++;/**Signal increments count to 1**/
-  if (count==0)
-    {
-  theSemaphore->Wait();/**Won't continue until signal is received**/
-  count--;
-  std::cout<<"Signal recieved"<<std::endl;/** Recieved as nothing else running**/
-    }
-  else
-    {
-      std::cout<<"Awaiting signal"<<std::endl;/**Cannot recieve signal as already in use >0**/
-  theSemaphore->Wait();/**Won't continue until signal is received**/
-  while(count!=-1){
-  count--;
-  }
-    }
-    }
+
+
+//Safe Buffer
+customer::customer() {
+  mutex = std::make_shared<Semaphore>(1);
+  items = std::make_shared<Semaphore>(0) ;
+  spaces = std::make_shared<Semaphore>(100);
+ 
 }
 
-int main(void){
-  std::thread threadOne;
-  std::shared_ptr<Semaphore> sem( new Semaphore);
-  /**< Launch the threads  */
-  threadOne=std::thread(taskOne,sem);
-  std::cout << "Launched from the main\n";
-  threadOne.join();
-  return 0;
+void customer::add(char p){ 
+  spaces->Wait(); // adds to buffer , space is occupied in buffer
+  mutex->Wait();
+  bufferQueue.push(p);
+  mutex->Signal();
+  items->Signal();
+}
+
+char customer::remove(){ 
+  char p;
+  items->Wait();
+  mutex->Wait();
+  p = bufferQueue.front();
+  bufferQueue.pop();
+  mutex->Signal();
+  spaces->Signal();
+  return p; //deletes from buffer, opens space in buffer
+
 }
